@@ -31,5 +31,11 @@
             "terminal.ansiBlack": "#767676",
             "terminalCursor.foreground": "#FFFFFF",
         }
-    }
+    },
+    "demoTime.highlightBlur": 1,
+    "demoTime.showClock": false,
+    "demoTime.insertTypingMode": "line-by-line",
+    "demoTime.nextActionBehaviour": "currentPosition",
+    "demoTime.highlightBackground": "rgba(0,0,0,0)",
+    "demoTime.defaultFileType": "yaml"
 }

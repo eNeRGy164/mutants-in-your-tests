@@ -15,13 +15,9 @@
         {
           "action": "open",
           "path": "/cs/Calculator/Calculator.cs"
-        },
-        {
-          "action": "positionCursor",
-          "path": "/cs/Calculator/Calculator.cs",
-          "position": "1"
         }
-      ]
+      ],
+      "id": "demo-mifzr40p-710m"
     },
     {
       "title": "Highlight \"Add\" method",
@@ -68,24 +64,28 @@
       ]
     },
     {
-      "title": "Run \"Add\" in Terminal",
+      "title": "Run \"dotnet build\" in Terminal",
       "steps": [
         {
-          "action": "unselect",
-          "path": "cs/Calculator/Calculator.cs"
+          "action": "unselect"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.action.terminal.moveToEditor"
         },
         {
           "action": "executeTerminalCommand",
-          "command": "Set-Location cs -ErrorAction SilentlyContinue"
-        },
-        {
-          "action": "executeTerminalCommand",
-          "command": "Clear"
+          "command": "Set-Location cs -ErrorAction SilentlyContinue; Clear"
         },
         {
           "action": "executeTerminalCommand",
           "command": "dotnet build"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Run \"Add\" in Terminal",
+      "steps": [
         {
           "action": "executeTerminalCommand",
           "command": "dotnet run --no-build --project Calculator.Cli -- --add 1 1"
@@ -133,9 +133,6 @@
       "description": "",
       "steps": [
         {
-          "action": "closeTerminal"
-        },
-        {
           "action": "create",
           "path": "/cs/Calculator.Specs/CalculatorTests.cs",
           "contentPath": "/snapshots/CalculatorTests.snapshot.cs"
@@ -150,16 +147,12 @@
       "title": "Run Unit Tests",
       "steps": [
         {
-          "action": "executeTerminalCommand",
-          "command": "Set-Location cs -ErrorAction SilentlyContinue"
+          "action": "executeVSCodeCommand",
+          "command": "workbench.action.terminal.moveToEditor"
         },
         {
           "action": "executeTerminalCommand",
-          "command": "Remove-Item -Recurse -Force Calculator.Specs\\TestResults\\ -ErrorAction SilentlyContinue"
-        },
-        {
-          "action": "executeTerminalCommand",
-          "command": "Clear"
+          "command": "Set-Location cs -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force Calculator.Specs\\TestResults\\ -ErrorAction SilentlyContinue; Clear"
         },
         {
           "action": "executeTerminalCommand",
@@ -186,6 +179,19 @@
           "command": "Reports/index.html"
         }
       ]
+    },
+    {
+      "id": "demo-mihz8vmt-z9nm",
+      "title": "Back to PowerPoint",
+      "steps": [
+        {
+          "action": "openPowerPoint"
+        }
+      ],
+      "icons": {
+        "start": "arrow-left",
+        "end": ""
+      }
     }
   ]
 }

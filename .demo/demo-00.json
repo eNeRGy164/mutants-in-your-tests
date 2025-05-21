@@ -1,0 +1,37 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "Setup",
+  "description": "",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mig2zq9b-ifkb",
+      "title": "Setup",
+      "steps": [
+        {
+          "action": "closeAll"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.action.terminal.killAll"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Clear"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "terminal.removeView"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.action.closeSidebar"
+        },
+        {
+          "action": "executeVSCodeCommand",
+          "command": "workbench.action.closePanel"
+        }
+      ]
+    }
+  ]
+}

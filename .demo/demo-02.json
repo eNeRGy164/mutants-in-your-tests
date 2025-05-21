@@ -9,6 +9,10 @@
       "steps": [
         {
           "action": "executeTerminalCommand",
+          "command": "Clear"
+        },
+        {
+          "action": "executeTerminalCommand",
           "command": "dotnet stryker"
         }
       ]
@@ -37,9 +41,10 @@
           "path": "/cs/Calculator.Specs/CalculatorTests.cs"
         },
         {
-        "action": "highlight",
-        "path": "/cs/Calculator.Specs/CalculatorTests.cs",
-        "position": "14"
+          "action": "highlight",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "position": "14",
+          "highlightWholeLine": true
         }
       ]
     },
@@ -50,7 +55,14 @@
           "action": "replace",
           "path": "/cs/Calculator.Specs/CalculatorTests.cs",
           "position": "14",
-          "content": "            Assert.Equal(3, result);"
+          "content": "            Assert.Equal(3, result);",
+          "insertTypingMode": "instant"
+        },
+        {
+          "action": "highlight",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "position": "14",
+          "highlightWholeLine": true
         }
       ]
     },
@@ -58,9 +70,10 @@
       "title": "Show \"Subtract_ReturnsRemainder\" test",
       "steps": [
         {
-        "action": "highlight",
-        "path": "/cs/Calculator.Specs/CalculatorTests.cs",
-        "position": "22"
+          "action": "highlight",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "position": "22",
+          "highlightWholeLine": true
         }
       ]
     },
@@ -72,6 +85,12 @@
           "path": "/cs/Calculator.Specs/CalculatorTests.cs",
           "position": "22",
           "content": "            Assert.Equal(2, result);"
+        },
+        {
+          "action": "highlight",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "position": "22",
+          "highlightWholeLine": true
         }
       ]
     },
@@ -79,9 +98,10 @@
       "title": "Show \"Multiply_ByZero_ReturnsZero\" test",
       "steps": [
         {
-        "action": "highlight",
-        "path": "/cs/Calculator.Specs/CalculatorTests.cs",
-        "position": "30"
+          "action": "highlight",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "position": "30",
+          "highlightWholeLine": true
         }
       ]
     },
@@ -97,12 +117,13 @@
           "path": "/cs/Calculator.Specs/CalculatorTests.cs",
           "position": "32",
           "content": "\n        [Fact]\n        public void Multiply_ReturnsProduct()\n        {\n            var result = this.calculator.Multiply(1, 5);\n\n            Assert.Equal(5, result);\n        }\n",
-          "lineInsertionDelay": 500
+          "lineInsertionDelay": 500,
+          "insertTypingSpeed": 500
         },
         {
           "action": "highlight",
           "path": "/cs/Calculator.Specs/CalculatorTests.cs",
-        "position": "33:39"
+          "position": "33:39"
         }
       ]
     },
@@ -116,10 +137,14 @@
         },
         {
           "action": "executeTerminalCommand",
+          "command": "Clear"
+        },
+        {
+          "action": "executeTerminalCommand",
           "command": "dotnet stryker"
         }
       ]
-    }
+    },
     {
       "title": "Show Mutation Report",
       "description": "",

@@ -8,9 +8,6 @@
       "description": "",
       "steps": [
         {
-          "action": "closeTerminal"
-        },
-        {
           "action": "create",
           "path": "/js/src/calculator.js",
           "contentPath": "/snapshots/calculator.snapshot.js"
@@ -52,15 +49,7 @@
       "steps": [
         {
           "action": "executeTerminalCommand",
-          "command": "Set-Location js -ErrorAction SilentlyContinue"
-        },
-        {
-          "action": "executeTerminalCommand",
-          "command": "Remove-Item -Recurse -Force .\\.stryker-tmp -ErrorAction SilentlyContinue"
-        },
-        {
-          "action": "executeTerminalCommand",
-          "command": "Clear"
+          "command": "Set-Location js -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force .\\.stryker-tmp -ErrorAction SilentlyContinue; Clear"
         },
         {
           "action": "executeTerminalCommand",
@@ -85,7 +74,8 @@
           "path": "/js/src/calculator.js",
           "position": "26,0",
           "content": "\n  testInput(input) {\n    return /^[0-9]{3,}$/ig.test(input);\n  }\n}",
-          "lineInsertionDelay": 500
+          "lineInsertionDelay": 500,
+          "insertTypingSpeed": 500
         },
         {
           "action": "highlight",
@@ -102,7 +92,8 @@
           "path": "/js/src/calculator.test.js",
           "position": "34,0",
           "content": "\n  it('testInput with valid input returns true', () => {\n    expect(calculator.testInput('123')).toBe(true);\n  });\n});",
-          "lineInsertionDelay": 500
+          "lineInsertionDelay": 500,
+          "insertTypingSpeed": 500
         },
         {
           "action": "highlight",
@@ -117,11 +108,7 @@
       "steps": [
         {
           "action": "executeTerminalCommand",
-          "command": "Remove-Item -Recurse -Force .\\.stryker-tmp -ErrorAction SilentlyContinue"
-        },
-        {
-          "action": "executeTerminalCommand",
-          "command": "Clear"
+          "command": "Remove-Item -Recurse -Force .\\.stryker-tmp -ErrorAction SilentlyContinue; Clear"
         },
         {
           "action": "executeTerminalCommand",
@@ -137,6 +124,19 @@
           "command": "reports/mutation/mutation.html"
         }
       ]
+    },
+    {
+      "id": "demo-mihz8vmt-z2nm",
+      "title": "Back to PowerPoint",
+      "steps": [
+        {
+          "action": "openPowerPoint"
+        }
+      ],
+      "icons": {
+        "start": "arrow-left",
+        "end": ""
+      }
     }
   ]
 }

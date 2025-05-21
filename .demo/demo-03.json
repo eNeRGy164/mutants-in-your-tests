@@ -8,9 +8,6 @@
       "description": "",
       "steps": [
         {
-          "action": "closeTerminal"
-        },
-        {
           "action": "create",
           "path": "/cs/Calculator/Calculator.cs",
           "contentPath": "/snapshots/Calculator.snapshot.cs"
@@ -35,7 +32,8 @@
           "path": "/cs/Calculator/Calculator.cs",
           "position": "31,0",
           "content": "\n    public int Noop(int a)\n    {\n        return a + 0;\n    }\n}",
-          "lineInsertionDelay": 500
+          "lineInsertionDelay": 500,
+          "insertTypingSpeed": 500
         },
         {
           "action": "highlight",
@@ -66,7 +64,9 @@
           "path": "/cs/Calculator.Specs/CalculatorTests.cs",
           "position": "54,0",
           "content": "\n        [Fact]\n        public void DoesNoop()\n        {\n            var result = this.calculator.Noop(4);\n\n            Assert.Equal(4, result);\n        }\n    }",
-          "lineInsertionDelay": 500
+          "lineInsertionDelay": 500,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 500
         },
         {
           "action": "highlight",
@@ -85,11 +85,7 @@
         },
         {
           "action": "executeTerminalCommand",
-          "command": "Set-Location cs -ErrorAction SilentlyContinue"
-        },
-        {
-          "action": "executeTerminalCommand",
-          "command": "Clear"
+          "command": "Set-Location cs -ErrorAction SilentlyContinue; Clear"
         },
         {
           "action": "executeTerminalCommand",
@@ -119,11 +115,6 @@
         {
           "action": "open",
           "path": "/cs/stryker-config.yaml"
-        },
-        {
-          "action": "positionCursor",
-          "path": "/cs/stryker-config.yaml",
-          "position": "1"
         }
       ]
     },
@@ -135,17 +126,13 @@
           "action": "applyPatch",
           "path": "/cs/stryker-config.yaml",
           "contentPath": "/snapshots/stryker-config.snapshot.yaml",
-          "patch": "/patches/stryker-config patch.patch"
+          "patch": "/patches/stryker-config patch.patch",
+          "insertTypingMode": "instant"
         },
         {
           "action": "open",
           "path": "/cs/stryker-config.yaml"
-        },
-        // {
-        //   "action": "highlight",
-        //   "path": "/cs/stryker-config.yaml",
-        //   "position": "7:8"
-        // }
+        }
       ]
     },
     {

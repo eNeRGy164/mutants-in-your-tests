@@ -1,0 +1,7 @@
+stryker-config:
+  reporters:
+    - html
+    - progress
+    - cleartext
+  mutation-level: Complete
+  coverage-analysis: perTest

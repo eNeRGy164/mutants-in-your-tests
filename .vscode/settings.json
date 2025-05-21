@@ -1,0 +1,35 @@
+{
+    "workbench.statusBar.visible": true,
+    "workbench.editor.showTabs": "multiple",
+    "workbench.activityBar.location": "default",
+    "workbench.colorTheme": "Visual Studio Light",
+    "terminal.integrated.fontLigatures.enabled": true,
+    //"editor.cursorStyle": "block",
+    "editor.cursorWidth": 3,
+    "editor.hover.enabled": false,
+    // "terminal.integrated.fontSize": 20,
+    "workbench.colorCustomizations": {
+        "[Visual Studio Light]": {
+            "terminal.background": "#0C0C0C",
+            "terminal.foreground": "#CCCCCC",
+            "terminal.inactiveSelectionBackground": "#3A3D41",
+            "terminal.ansiBlue": "#3B78FF",
+            "terminal.ansiBrightBlue": "#0037DA",
+            "terminal.ansiBrightCyan": "#3A96DD",
+            "terminal.ansiBrightGreen": "#4EED91",
+            "terminal.ansiBrightMagenta": "#D670FF",
+            "terminal.ansiBrightRed": "#FF6C60",
+            "terminal.ansiBrightWhite": "#F2F2F2",
+            "terminal.ansiBrightYellow": "#F4BF75",
+            "terminal.ansiCyan": "#29B8DB",
+            "terminal.ansiGreen": "#00B300",
+            "terminal.ansiMagenta": "#A74CBE",
+            "terminal.ansiRed": "#FF0000",
+            "terminal.ansiWhite": "#BEBEBE",
+            "terminal.ansiYellow": "#F0F000",
+            "terminal.ansiBrightBlack": "#000000",
+            "terminal.ansiBlack": "#767676",
+            "terminalCursor.foreground": "#FFFFFF",
+        }
+    }
+}

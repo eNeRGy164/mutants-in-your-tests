@@ -1,0 +1,176 @@
+{
+  "$schema": "https://demotime.elio.dev/demo-time.schema.json",
+  "title": "03 - Equivalent mutants",
+  "description": "",
+  "demos": [
+    {
+      "title": "Show Calculator.cs",
+      "description": "",
+      "steps": [
+        {
+          "action": "closeTerminal"
+        },
+        {
+          "action": "create",
+          "path": "/cs/Calculator/Calculator.cs",
+          "contentPath": "/snapshots/Calculator.snapshot.cs"
+        },
+        {
+          "action": "open",
+          "path": "/cs/Calculator/Calculator.cs"
+        },
+        {
+          "action": "positionCursor",
+          "path": "/cs/Calculator/Calculator.cs",
+          "position": "1"
+        }
+      ]
+    },
+    {
+      "title": "Add \"NoOperation\" method",
+      "description": "",
+      "steps": [
+        {
+          "action": "replace",
+          "path": "/cs/Calculator/Calculator.cs",
+          "position": "31,0",
+          "content": "\n    public int Noop(int a)\n    {\n        return a + 0;\n    }\n}",
+          "lineInsertionDelay": 500
+        },
+        {
+          "action": "highlight",
+          "path": "/cs/Calculator/Calculator.cs",
+          "position": "32:35"
+        }
+      ]
+    },
+    {
+      "title": "Show CalculatorTests.cs",
+      "steps": [
+        {
+          "action": "open",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs"
+        },
+        {
+          "action": "positionCursor",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "position": "54"
+        }
+      ]
+    },
+    {
+      "title": "Add \"DoesNoop\" test",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "position": "54,0",
+          "content": "\n        [Fact]\n        public void DoesNoop()\n        {\n            var result = this.calculator.Noop(4);\n\n            Assert.Equal(4, result);\n        }\n    }",
+          "lineInsertionDelay": 500
+        },
+        {
+          "action": "highlight",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "position": "55:61"
+        }
+      ]
+    },
+    {
+      "title": "Run Stryker.NET",
+      "description": "",
+      "steps": [
+        {
+          "action": "unselect",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Set-Location cs -ErrorAction SilentlyContinue"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Clear"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet stryker"
+        }
+      ]
+    },
+    {
+      "title": "Show Mutation Report",
+      "description": "",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "& (Get-ChildItem \"StrykerOutput\" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | ForEach-Object { Join-Path $_.FullName \"reports\\mutation-report.html\" })"
+        }
+      ]
+    },
+    {
+      "title": "Show stryker-config.yaml",
+      "description": "",
+      "steps": [
+        {
+          "action": "create",
+          "path": "/cs/stryker-config.yaml",
+          "contentPath": "/snapshots/stryker-config.snapshot.yaml"
+        },
+        {
+          "action": "open",
+          "path": "/cs/stryker-config.yaml"
+        },
+        {
+          "action": "positionCursor",
+          "path": "/cs/stryker-config.yaml",
+          "position": "1"
+        }
+      ]
+    },
+    {
+      "title": "Update configuration",
+      "description": "",
+      "steps": [
+        {
+          "action": "applyPatch",
+          "path": "/cs/stryker-config.yaml",
+          "contentPath": "/snapshots/stryker-config.snapshot.yaml",
+          "patch": "/patches/stryker-config patch.patch"
+        },
+        {
+          "action": "open",
+          "path": "/cs/stryker-config.yaml"
+        },
+        // {
+        //   "action": "highlight",
+        //   "path": "/cs/stryker-config.yaml",
+        //   "position": "7:8"
+        // }
+      ]
+    },
+    {
+      "title": "Run Stryker.NET",
+      "description": "",
+      "steps": [
+        {
+          "action": "unselect",
+          "path": "/cs/stryker-config.yaml"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet stryker"
+        }
+      ]
+    },
+    {
+      "title": "Show Mutation Report",
+      "description": "",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "& (Get-ChildItem \"StrykerOutput\" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | ForEach-Object { Join-Path $_.FullName \"reports\\mutation-report.html\" })"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Index: /cs/stryker-config.yaml
+===================================================================
+--- /cs/stryker-config.yaml
++++ /cs/stryker-config.yaml
+@@ -4,4 +4,6 @@
+     - progress
+     - cleartext
+   mutation-level: Complete
+   coverage-analysis: perTest
++  mutate:
++    - "!Calculator.cs{536..549}"

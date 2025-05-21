@@ -1,0 +1,142 @@
+{
+  "$schema": "https://demotime.elio.dev/demo-time.schema.json",
+  "title": "04 - Regular Expressions",
+  "description": "",
+  "demos": [
+    {
+      "title": "Show calculator.js",
+      "description": "",
+      "steps": [
+        {
+          "action": "closeTerminal"
+        },
+        {
+          "action": "create",
+          "path": "/js/src/calculator.js",
+          "contentPath": "/snapshots/calculator.snapshot.js"
+        },
+        {
+          "action": "open",
+          "path": "/js/src/calculator.js"
+        },
+        {
+          "action": "positionCursor",
+          "path": "/js/src/calculator.js",
+          "position": "1"
+        }
+      ]
+    },
+    {
+      "title": "Show calculator.test",
+      "description": "",
+      "steps": [
+        {
+          "action": "create",
+          "path": "/js/src/calculator.test.js",
+          "contentPath": "/snapshots/calculator.test.snapshot.js"
+        },
+        {
+          "action": "open",
+          "path": "/js/src/calculator.test.js"
+        },
+        {
+          "action": "positionCursor",
+          "path": "/js/src/calculator.test.js",
+          "position": "1"
+        }
+      ]
+    },
+    {
+      "title": "Run Stryker",
+      "description": "",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "Set-Location js -ErrorAction SilentlyContinue"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Remove-Item -Recurse -Force .\\.stryker-tmp -ErrorAction SilentlyContinue"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Clear"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "npx stryker run --cleanTempDir false"
+        }
+      ]
+    },
+    {
+      "title": "Open mutation report",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "reports/mutation/mutation.html"
+        }
+      ]
+    },
+    {
+      "title": "Add \"testInput\" method",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "/js/src/calculator.js",
+          "position": "26,0",
+          "content": "\n  testInput(input) {\n    return /^[0-9]{3,}$/ig.test(input);\n  }\n}",
+          "lineInsertionDelay": 500
+        },
+        {
+          "action": "highlight",
+          "path": "/js/src/calculator.js",
+          "position": "27:29"
+        }
+      ]
+    },
+    {
+      "title": "Add \"testInput\" test",
+      "steps": [
+        {
+          "action": "insert",
+          "path": "/js/src/calculator.test.js",
+          "position": "34,0",
+          "content": "\n  it('testInput with valid input returns true', () => {\n    expect(calculator.testInput('123')).toBe(true);\n  });\n});",
+          "lineInsertionDelay": 500
+        },
+        {
+          "action": "highlight",
+          "path": "/js/src/calculator.test.js",
+          "position": "35:37"
+        }
+      ]
+    },
+    {
+      "title": "Run Stryker",
+      "description": "",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "Remove-Item -Recurse -Force .\\.stryker-tmp -ErrorAction SilentlyContinue"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Clear"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "npx stryker run --cleanTempDir false"
+        }
+      ]
+    },
+    {
+      "title": "Open mutation report",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "reports/mutation/mutation.html"
+        }
+      ]
+    }
+  ]
+}

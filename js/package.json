@@ -1,0 +1,16 @@
+{
+  "name": "text-mutations",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "Michaël Hompus",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@stryker-mutator/vitest-runner": "^9.0.1",
+    "vitest": "^3.1.3"
+  }
+}

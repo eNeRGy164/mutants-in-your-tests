@@ -1,0 +1,191 @@
+{
+  "$schema": "https://demotime.elio.dev/demo-time.schema.json",
+  "title": "01 - Simple application",
+  "description": "A basic calculator",
+  "demos": [
+    {
+      "title": "Show Calculator.cs",
+      "description": "",
+      "steps": [
+        {
+          "action": "create",
+          "path": "/cs/Calculator/Calculator.cs",
+          "contentPath": "/snapshots/Calculator.snapshot.cs"
+        },
+        {
+          "action": "open",
+          "path": "/cs/Calculator/Calculator.cs"
+        },
+        {
+          "action": "positionCursor",
+          "path": "/cs/Calculator/Calculator.cs",
+          "position": "1"
+        }
+      ]
+    },
+    {
+      "title": "Highlight \"Add\" method",
+      "description": "This method adds two numbers together.",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "cs/Calculator/Calculator.cs",
+          "position": "5:8"
+        }
+      ]
+    },
+    {
+      "title": "Highlight \"Subtract\" method",
+      "description": "This method subtracts two numbers.",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "cs/Calculator/Calculator.cs",
+          "position": "10:13"
+        }
+      ]
+    },
+    {
+      "title": "Highlight \"Multiply\" method",
+      "description": "This method multiplies two numbers.",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "cs/Calculator/Calculator.cs",
+          "position": "15:18"
+        }
+      ]
+    },
+    {
+      "title": "Highlight \"Divide\" method",
+      "description": "This method divides two numbers.",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "cs/Calculator/Calculator.cs",
+          "position": "20:30"
+        }
+      ]
+    },
+    {
+      "title": "Run \"Add\" in Terminal",
+      "steps": [
+        {
+          "action": "unselect",
+          "path": "cs/Calculator/Calculator.cs"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Set-Location cs -ErrorAction SilentlyContinue"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Clear"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run --no-build --project Calculator.Cli -- --add 1 1"
+        }
+      ]
+    },
+    {
+      "title": "Run \"Subtract\" in Terminal",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run --no-build --project Calculator.Cli -- --subtract 8 4"
+        }
+      ]
+    },
+    {
+      "title": "Run \"Multiply\" in Terminal",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run --no-build --project Calculator.Cli -- --multiply 3 5"
+        }
+      ]
+    },
+    {
+      "title": "Run \"Divide\" in Terminal",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run --no-build --project Calculator.Cli -- --divide 10 2"
+        }
+      ]
+    },
+    {
+      "title": "Run \"Divide by zero\" in Terminal",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run --no-build --project Calculator.Cli -- --divide 10 0"
+        }
+      ]
+    },
+    {
+      "title": "Show Calculator.Tests",
+      "description": "",
+      "steps": [
+        {
+          "action": "closeTerminal"
+        },
+        {
+          "action": "create",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs",
+          "contentPath": "/snapshots/CalculatorTests.snapshot.cs"
+        },
+        {
+          "action": "open",
+          "path": "/cs/Calculator.Specs/CalculatorTests.cs"
+        }
+      ]
+    },
+    {
+      "title": "Run Unit Tests",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "Set-Location cs -ErrorAction SilentlyContinue"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Remove-Item -Recurse -Force Calculator.Specs\\TestResults\\ -ErrorAction SilentlyContinue"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "Clear"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet test --no-build"
+        }
+      ]
+    },
+    {
+      "title": "Create Coverage Report",
+      "description": "",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "reportgenerator -reports:**/coverage.cobertura.xml -targetdir:Reports -reporttypes:Html_Light -verbosity:Info"
+        }
+      ]
+    },
+    {
+      "title": "Open Coverage Report",
+      "description": "",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "Reports/index.html"
+        }
+      ]
+    }
+  ]
+}

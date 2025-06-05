@@ -1,11 +1,11 @@
 {
   "$schema": "https://demotime.elio.dev/demo-time.schema.json",
   "title": "04 - Regular Expressions",
-  "description": "",
+  "description": "Demonstrate mutation testing in JavaScript environment with Vitest and Stryker, focusing on regular expression patterns to show how complex logic can reveal test weaknesses through mutation testing.",
   "demos": [
     {
       "title": "Show calculator.js",
-      "description": "",
+      "description": "Display the JavaScript calculator implementation to introduce the JavaScript environment for mutation testing.",
       "steps": [
         {
           "action": "closeTerminal"
@@ -28,7 +28,7 @@
     },
     {
       "title": "Show calculator.test",
-      "description": "",
+      "description": "Display the JavaScript test file using Vitest to show the existing test coverage before adding regex functionality.",
       "steps": [
         {
           "action": "create",
@@ -48,7 +48,7 @@
     },
     {
       "title": "Run Stryker",
-      "description": "",
+      "description": "Execute Stryker mutation testing in the JavaScript environment to establish a baseline mutation score.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -70,6 +70,7 @@
     },
     {
       "title": "Open mutation report",
+      "description": "View the initial mutation report to see baseline scores before adding regex functionality.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -79,6 +80,7 @@
     },
     {
       "title": "Add \"testInput\" method",
+      "description": "Add a method with a complex regular expression pattern to demonstrate how regex mutations can reveal test weaknesses.",
       "steps": [
         {
           "action": "insert",
@@ -96,6 +98,7 @@
     },
     {
       "title": "Add \"testInput\" test",
+      "description": "Add a basic test for the regex method that only covers one scenario, demonstrating insufficient test coverage for complex patterns.",
       "steps": [
         {
           "action": "insert",
@@ -113,7 +116,7 @@
     },
     {
       "title": "Run Stryker",
-      "description": "",
+      "description": "Re-run mutation testing with the new regex method to see how many mutants survive the insufficient test coverage.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -131,6 +134,7 @@
     },
     {
       "title": "Open mutation report",
+      "description": "View the final mutation report to analyze how regex mutations revealed weaknesses in the single test case, demonstrating the value of mutation testing for complex patterns.",
       "steps": [
         {
           "action": "executeTerminalCommand",

@@ -1,11 +1,11 @@
 {
   "$schema": "https://demotime.elio.dev/demo-time.schema.json",
   "title": "03 - Equivalent mutants",
-  "description": "",
+  "description": "Explore equivalent mutants - mutations that don't change program behavior - and learn how to configure Stryker to handle them effectively, demonstrating that not all surviving mutants indicate poor test quality.",
   "demos": [
     {
       "title": "Show Calculator.cs",
-      "description": "",
+      "description": "Display the calculator class to prepare for adding a method that will demonstrate the concept of equivalent mutants.",
       "steps": [
         {
           "action": "closeTerminal"
@@ -28,7 +28,7 @@
     },
     {
       "title": "Add \"NoOperation\" method",
-      "description": "",
+      "description": "Add a no-operation method that adds zero to demonstrate equivalent mutants - mutations that don't change the behavior.",
       "steps": [
         {
           "action": "replace",
@@ -46,6 +46,7 @@
     },
     {
       "title": "Show CalculatorTests.cs",
+      "description": "Open the test file to prepare for adding a test for the no-operation method.",
       "steps": [
         {
           "action": "open",
@@ -60,6 +61,7 @@
     },
     {
       "title": "Add \"DoesNoop\" test",
+      "description": "Add a comprehensive test for the no-operation method that verifies it returns the input unchanged.",
       "steps": [
         {
           "action": "insert",
@@ -77,7 +79,7 @@
     },
     {
       "title": "Run Stryker.NET",
-      "description": "",
+      "description": "Execute mutation testing to see how the no-operation method creates equivalent mutants that survive despite good tests.",
       "steps": [
         {
           "action": "unselect",
@@ -99,7 +101,7 @@
     },
     {
       "title": "Show Mutation Report",
-      "description": "",
+      "description": "View the mutation report to see surviving mutants in the no-operation method that demonstrate equivalent mutants.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -109,7 +111,7 @@
     },
     {
       "title": "Show stryker-config.yaml",
-      "description": "",
+      "description": "Display the Stryker configuration file to show how to configure equivalent mutant handling.",
       "steps": [
         {
           "action": "create",
@@ -129,7 +131,7 @@
     },
     {
       "title": "Update configuration",
-      "description": "",
+      "description": "Apply configuration changes to disable specific mutants for the no-operation method, demonstrating how to handle equivalent mutants.",
       "steps": [
         {
           "action": "applyPatch",
@@ -140,17 +142,12 @@
         {
           "action": "open",
           "path": "/cs/stryker-config.yaml"
-        },
-        // {
-        //   "action": "highlight",
-        //   "path": "/cs/stryker-config.yaml",
-        //   "position": "7:8"
-        // }
+        }
       ]
     },
     {
       "title": "Run Stryker.NET",
-      "description": "",
+      "description": "Re-run mutation testing with the updated configuration to see how equivalent mutants are now properly handled.",
       "steps": [
         {
           "action": "unselect",
@@ -164,7 +161,7 @@
     },
     {
       "title": "Show Mutation Report",
-      "description": "",
+      "description": "View the final mutation report to see how the configuration changes affected the mutation score by properly handling equivalent mutants.",
       "steps": [
         {
           "action": "executeTerminalCommand",

@@ -1,11 +1,11 @@
 {
   "$schema": "https://demotime.elio.dev/demo-time.schema.json",
   "title": "02 - Mutation testing",
-  "description": "",
+  "description": "Introduce mutation testing with Stryker.NET to reveal weaknesses in seemingly comprehensive unit tests and learn how mutation testing provides better insight into test quality than traditional code coverage.",
   "demos": [
     {
       "title": "Run Stryker.NET",
-      "description": "",
+      "description": "Execute Stryker.NET mutation testing to generate mutated versions of the code and see how many mutants survive our existing tests.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -15,7 +15,7 @@
     },
     {
       "title": "Show Mutation Report",
-      "description": "",
+      "description": "Open the generated mutation report to analyze which mutants survived and understand how our tests are failing to catch code changes.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -25,7 +25,7 @@
     },
     {
       "title": "Show CalculatorTests.cs",
-      "description": "",
+      "description": "Display the current test file to examine weak test assertions that allowed mutants to survive.",
       "steps": [
         {
           "action": "create",
@@ -45,6 +45,7 @@
     },
     {
       "title": "Fix \"Add_ReturnsSum\" test",
+      "description": "Improve the Add test by adding a proper assertion that verifies the actual result, replacing the meaningless Assert.True(true).",
       "steps": [
         {
           "action": "replace",
@@ -56,6 +57,7 @@
     },
     {
       "title": "Show \"Subtract_ReturnsRemainder\" test",
+      "description": "Highlight the weak subtraction test that only checks if the result is positive, missing actual value verification.",
       "steps": [
         {
         "action": "highlight",
@@ -66,6 +68,7 @@
     },
     {
       "title": "Fix \"Subtract_ReturnsRemainder\" test",
+      "description": "Replace the weak assertion with a precise value check that will catch arithmetic operator mutations.",
       "steps": [
         {
           "action": "replace",
@@ -77,6 +80,7 @@
     },
     {
       "title": "Show \"Multiply_ByZero_ReturnsZero\" test",
+      "description": "Examine the existing multiply test that only covers the zero edge case, missing normal multiplication scenarios.",
       "steps": [
         {
         "action": "highlight",
@@ -87,6 +91,7 @@
     },
     {
       "title": "Add \"Multiply_ReturnsProduct\" test",
+      "description": "Add a new test for normal multiplication cases to catch mutants that survive the zero-only test scenario.",
       "steps": [
         {
           "action": "unselect",
@@ -108,7 +113,7 @@
     },
     {
       "title": "Run Stryker.NET",
-      "description": "",
+      "description": "Re-run mutation testing with improved tests to see how the mutation score improves when tests have better assertions.",
       "steps": [
         {
           "action": "unselect",
@@ -119,10 +124,10 @@
           "command": "dotnet stryker"
         }
       ]
-    }
+    },
     {
       "title": "Show Mutation Report",
-      "description": "",
+      "description": "View the updated mutation report to compare the improved mutation score after fixing weak test assertions.",
       "steps": [
         {
           "action": "executeTerminalCommand",

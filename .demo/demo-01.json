@@ -5,7 +5,7 @@
   "demos": [
     {
       "title": "Show Calculator.cs",
-      "description": "",
+      "description": "Create and display the main Calculator class with basic arithmetic operations to establish the foundation for our mutation testing demonstration.",
       "steps": [
         {
           "action": "create",
@@ -69,6 +69,7 @@
     },
     {
       "title": "Run \"Add\" in Terminal",
+      "description": "Build the project and test the calculator's Add function through the CLI to demonstrate basic functionality before examining test coverage.",
       "steps": [
         {
           "action": "unselect",
@@ -94,6 +95,7 @@
     },
     {
       "title": "Run \"Subtract\" in Terminal",
+      "description": "Test the subtraction functionality to show multiple operations working correctly.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -103,6 +105,7 @@
     },
     {
       "title": "Run \"Multiply\" in Terminal",
+      "description": "Demonstrate the multiplication operation to establish all basic arithmetic functions are working.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -112,6 +115,7 @@
     },
     {
       "title": "Run \"Divide\" in Terminal",
+      "description": "Test normal division operation before demonstrating error handling.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -121,6 +125,7 @@
     },
     {
       "title": "Run \"Divide by zero\" in Terminal",
+      "description": "Demonstrate error handling by testing division by zero to show exception handling in action.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -130,7 +135,7 @@
     },
     {
       "title": "Show Calculator.Tests",
-      "description": "",
+      "description": "Create and display the unit test file to examine traditional testing approaches and reveal their limitations in catching subtle bugs.",
       "steps": [
         {
           "action": "closeTerminal"
@@ -148,6 +153,7 @@
     },
     {
       "title": "Run Unit Tests",
+      "description": "Execute the unit tests to show they all pass and create a false sense of security about code quality.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -169,7 +175,7 @@
     },
     {
       "title": "Create Coverage Report",
-      "description": "",
+      "description": "Generate a code coverage report to demonstrate high coverage percentages that can be misleading about actual test quality.",
       "steps": [
         {
           "action": "executeTerminalCommand",
@@ -179,7 +185,7 @@
     },
     {
       "title": "Open Coverage Report",
-      "description": "",
+      "description": "View the HTML coverage report to see the traditional metrics that will contrast with mutation testing results in the next demo.",
       "steps": [
         {
           "action": "executeTerminalCommand",

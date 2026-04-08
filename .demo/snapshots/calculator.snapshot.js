@@ -23,4 +23,5 @@ export class Calculator {
     // Stryker disable next-line ArithmeticOperator
     return a + 0;
   }
+
 }

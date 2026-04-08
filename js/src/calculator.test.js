@@ -31,4 +31,5 @@ describe('Calculator', () => {
   it('noop returns the original value', () => {
     expect(calculator.noop(4)).toBe(4);
   });
+
 });

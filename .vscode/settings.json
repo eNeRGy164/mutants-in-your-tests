@@ -47,4 +47,13 @@
     "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
     "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
     "js/ts.suggest.enabled": false,
+    "terminal.integrated.suggest.enabled": false,
+    "terminal.integrated.suggest.inlineSuggestion": "off",
+    "terminal.integrated.shellIntegration.quickFixEnabled": false,
+    "terminal.integrated.stickyScroll.enabled": false,
+    "terminal.integrated.shellIntegration.showCommandGuide": false,
+    "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+    "terminal.integrated.commandsToSkipShell": [
+        "demo-time.start"
+    ]
 }

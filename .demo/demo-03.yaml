@@ -1,0 +1,95 @@
+title: 03 - Equivalent mutants
+version: 3
+scenes:
+  - title: Show Calculator.cs
+    moves:
+      - action: create
+        path: /cs/Calculator/Calculator.cs
+        contentPath: .demo/snapshots/Calculator.snapshot.cs
+      - action: open
+        path: /cs/Calculator/Calculator.cs
+      - action: positionCursor
+        path: /cs/Calculator/Calculator.cs
+        position: '1'
+  - title: Add "NoOperation" method
+    moves:
+      - action: insert
+        path: /cs/Calculator/Calculator.cs
+        content: |-2
+
+              public int Noop(int a)
+              {
+                  return a + 0;
+              }
+        position: 31,0
+      - action: highlight
+        path: /cs/Calculator/Calculator.cs
+        position: '32:35'
+  - title: Show CalculatorTests.cs
+    moves:
+      - action: open
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+      - action: positionCursor
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '54'
+  - title: Add "DoesNoop" test
+    moves:
+      - action: insert
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: 54,0
+        content: |-2
+
+              [Fact]
+              public void DoesNoop() {
+                  var result = this.calculator.Noop(4);
+
+                  Assert.Equal(4, result);
+              }
+      - action: highlight
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '55:60'
+  - title: Run Stryker.NET
+    moves:
+      - action: unselect
+      - action: executeVSCodeCommand
+        command: workbench.action.terminal.moveToEditor
+      - action: executeTerminalCommand
+        command: Set-Location cs -ErrorAction SilentlyContinue; Clear
+      - action: executeTerminalCommand
+        command: dotnet stryker
+  - title: Show Mutation Report
+    moves:
+      - action: executeTerminalCommand
+        command: 'Get-ChildItem "StrykerOutput" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | ForEach-Object { Set-ClipBoard -Value ((Join-Path $_.FullName "reports\mutation-report.html") -replace "\\", "/") }'
+      - action: openWebsite
+        url: "file:{DT_CLIPBOARD}"
+        openInVSCode: true
+  - title: Show stryker-config.yaml
+    moves:
+      - action: create
+        path: /cs/stryker-config.yaml
+        contentPath: .demo/snapshots/stryker-config.snapshot.yaml
+      - action: open
+        path: /cs/stryker-config.yaml
+  - title: Update configuration
+    moves:
+      - action: applyPatch
+        path: /cs/stryker-config.yaml
+        contentPath: .demo/snapshots/stryker-config.snapshot.yaml
+        patch: .demo/patches/stryker-config patch.patch
+        insertTypingMode: instant
+      - action: open
+        path: /cs/stryker-config.yaml
+  - title: Run Stryker.NET
+    moves:
+      - action: unselect
+        path: /cs/stryker-config.yaml
+      - action: executeTerminalCommand
+        command: dotnet stryker
+  - title: Show Mutation Report
+    moves:
+      - action: executeTerminalCommand
+        command: 'Get-ChildItem "StrykerOutput" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | ForEach-Object { Set-ClipBoard -Value ((Join-Path $_.FullName "reports\mutation-report.html") -replace "\\", "/") }'
+      - action: openWebsite
+        url: "file:{DT_CLIPBOARD}"
+        openInVSCode: true

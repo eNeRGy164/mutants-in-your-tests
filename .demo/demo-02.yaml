@@ -1,0 +1,100 @@
+title: 02 - Mutation testing
+version: 3
+scenes:
+  - title: Run Stryker.NET
+    moves:
+      - action: executeTerminalCommand
+        command: Clear
+      - action: executeTerminalCommand
+        command: dotnet stryker
+  - title: Show Mutation Report
+    moves:
+      - action: executeTerminalCommand
+        command: Get-ChildItem "StrykerOutput" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | ForEach-Object { Set-ClipBoard -Value ((Join-Path $_.FullName "reports\mutation-report.html") -replace "\\", "/") }
+      - action: openWebsite
+        url: file:{DT_CLIPBOARD}
+        openInVSCode: true
+  - title: Show CalculatorTests.cs
+    moves:
+      - action: create
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        contentPath: .demo/snapshots/CalculatorTests.snapshot.cs
+      - action: open
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        focusTop: true
+  - title: Highlight issue
+    moves:
+      - action: highlight
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '14'
+  - title: Fix "Add_ReturnsSum" test
+    moves:
+      - action: replace
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '14'
+        content: '        Assert.Equal(3, result);'
+      - action: highlight
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '14'
+  - title: Show "Subtract_ReturnsRemainder" test
+    moves:
+      - action: highlight
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '22'
+  - title: Fix "Subtract_ReturnsRemainder" test
+    moves:
+      - action: replace
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '22'
+        content: '        Assert.Equal(2, result);'
+      - action: highlight
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '22'
+        highlightWholeLine: true
+  - title: Show "Multiply_ByZero_ReturnsZero" test
+    moves:
+      - action: highlight
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '30'
+  - title: Add "Multiply_ReturnsProduct" test
+    moves:
+      - action: unselect
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+      - action: insert
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '32'
+        content: |2-
+
+              [Fact]
+              public void Multiply_ReturnsProduct()
+              {
+                  var result = this.calculator.Multiply(1, 5);
+
+                  Assert.Equal(5, result);
+              }
+        insertTypingMode: character-by-character
+      - action: highlight
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        position: '33:39'
+  - title: Run Stryker.NET
+    moves:
+      - action: unselect
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+      - action: executeTerminalCommand
+        command: Clear
+      - action: executeTerminalCommand
+        command: dotnet stryker
+  - title: Show Mutation Report
+    moves:
+      - action: executeTerminalCommand
+        command: Get-ChildItem "StrykerOutput" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | ForEach-Object { Set-ClipBoard -Value ((Join-Path $_.FullName "reports\mutation-report.html") -replace "\\", "/") }
+      - action: openWebsite
+        url: file:{DT_CLIPBOARD}
+        openInVSCode: true
+  - title: Back to PowerPoint
+    moves:
+      - action: openPowerPoint
+      - action: closeAll
+    icons:
+      start: arrow-left
+      end: ''

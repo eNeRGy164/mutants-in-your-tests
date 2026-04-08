@@ -38,7 +38,7 @@ npm install
 This repository contains four progressive demonstrations of mutation testing concepts:
 
 ### Demo 1: Simple Application
-**File:** `.demo/demo-01.json`  
+**File:** `.demo/demo-01.yaml`  
 **Focus:** Basic calculator implementation and traditional testing
 
 - Introduces a simple Calculator class with basic arithmetic operations
@@ -48,7 +48,7 @@ This repository contains four progressive demonstrations of mutation testing con
 - **Key Learning:** Traditional coverage metrics can be misleading
 
 ### Demo 2: Mutation Testing  
-**File:** `.demo/demo-02.json`  
+**File:** `.demo/demo-02.yaml`  
 **Focus:** Introduction to mutation testing with Stryker.NET
 
 - Runs Stryker.NET mutation testing on the calculator
@@ -57,7 +57,7 @@ This repository contains four progressive demonstrations of mutation testing con
 - **Key Learning:** High code coverage ≠ good test quality
 
 ### Demo 3: Equivalent Mutants
-**File:** `.demo/demo-03.json`  
+**File:** `.demo/demo-03.yaml`  
 **Focus:** Handling equivalent mutants and Stryker configuration
 
 - Introduces the concept of equivalent mutants using a "no-operation" method
@@ -66,7 +66,7 @@ This repository contains four progressive demonstrations of mutation testing con
 - **Key Learning:** Not all surviving mutants indicate poor tests
 
 ### Demo 4: Regular Expressions
-**File:** `.demo/demo-04.json`  
+**File:** `.demo/demo-04.yaml`  
 **Focus:** Mutation testing with JavaScript and complex patterns
 
 - Switches to JavaScript environment using Vitest and Stryker
@@ -81,10 +81,10 @@ This repository contains four progressive demonstrations of mutation testing con
 2. Install the DemoTime extension if not already installed
 3. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
 4. Run "DemoTime: Start Demo" and select one of the demo files:
-   - `demo-01.json` - Simple Application
-   - `demo-02.json` - Mutation Testing  
-   - `demo-03.json` - Equivalent Mutants
-   - `demo-04.json` - Regular Expressions
+   - `demo-01.yaml` - Simple Application
+   - `demo-02.yaml` - Mutation Testing  
+   - `demo-03.yaml` - Equivalent Mutants
+   - `demo-04.yaml` - Regular Expressions
 
 ### Manual Execution
 If you prefer to run commands manually:
@@ -106,12 +106,12 @@ npx stryker run
 
 ## Project Structure
 
-```
+```plain
 ├── .demo/                  # DemoTime configurations
-│   ├── demo-01.json       # Simple Application demo
-│   ├── demo-02.json       # Mutation Testing demo  
-│   ├── demo-03.json       # Equivalent Mutants demo
-│   ├── demo-04.json       # Regular Expressions demo
+│   ├── demo-01.yaml       # Simple Application demo
+│   ├── demo-02.yaml       # Mutation Testing demo  
+│   ├── demo-03.yaml       # Equivalent Mutants demo
+│   ├── demo-04.yaml       # Regular Expressions demo
 │   ├── patches/           # Code patches for demos
 │   └── snapshots/         # Code snapshots for demos
 ├── cs/                    # C# project
@@ -144,4 +144,4 @@ MIT License - Feel free to use this material for your own presentations and lear
 
 ---
 
-*Happy mutation testing! 🧬🧪*
+_Happy mutation testing! 🧬🧪_

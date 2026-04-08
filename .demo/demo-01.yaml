@@ -1,0 +1,94 @@
+title: 01 - Simple application
+description: A basic calculator
+version: 3
+scenes:
+  - id: demo-mifzr40p-710m
+    title: Show Calculator.cs
+    moves:
+      - action: create
+        path: cs/Calculator/Calculator.cs
+        contentPath: .demo/snapshots/Calculator.snapshot.cs
+      - action: open
+        path: /cs/Calculator/Calculator.cs
+  - title: Highlight "Add" method
+    description: This method adds two numbers together.
+    moves:
+      - action: highlight
+        path: cs/Calculator/Calculator.cs
+        position: '5:8'
+  - title: Highlight "Subtract" method
+    description: This method subtracts two numbers.
+    moves:
+      - action: highlight
+        path: cs/Calculator/Calculator.cs
+        position: '10:13'
+  - title: Highlight "Multiply" method
+    description: This method multiplies two numbers.
+    moves:
+      - action: highlight
+        path: cs/Calculator/Calculator.cs
+        position: '15:18'
+  - title: Highlight "Divide" method
+    description: This method divides two numbers.
+    moves:
+      - action: highlight
+        path: cs/Calculator/Calculator.cs
+        position: '20:30'
+  - title: Run "dotnet build" in Terminal
+    moves:
+      - action: unselect
+      - action: executeVSCodeCommand
+        command: workbench.action.terminal.moveToEditor
+      - action: executeTerminalCommand
+        command: Set-Location cs -ErrorAction SilentlyContinue; Get-Location | Select-Object -ExpandProperty Path | Set-Clipboard; Clear
+      - action: setState
+        state:
+          key: cs-path
+          value: "{DT_CLIPBOARD}"
+      - action: executeTerminalCommand
+        command: dotnet build
+  - title: Run "Add" in Terminal
+    moves:
+      - action: executeTerminalCommand
+        command: dotnet run --no-build --project Calculator.Cli -- --add 1 1
+  - title: Run "Subtract" in Terminal
+    moves:
+      - action: executeTerminalCommand
+        command: dotnet run --no-build --project Calculator.Cli -- --subtract 8 4
+  - title: Run "Multiply" in Terminal
+    moves:
+      - action: executeTerminalCommand
+        command: dotnet run --no-build --project Calculator.Cli -- --multiply 3 5
+  - title: Run "Divide" in Terminal
+    moves:
+      - action: executeTerminalCommand
+        command: dotnet run --no-build --project Calculator.Cli -- --divide 10 2
+  - title: Run "Divide by zero" in Terminal
+    moves:
+      - action: executeTerminalCommand
+        command: dotnet run --no-build --project Calculator.Cli -- --divide 10 0
+  - title: Show Calculator.Tests
+    description: ''
+    moves:
+      - action: create
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+        contentPath: .demo/snapshots/CalculatorTests.snapshot.cs
+      - action: open
+        path: /cs/Calculator.Specs/CalculatorTests.cs
+  - title: Run Unit Tests
+    moves:
+      - action: executeVSCodeCommand
+        command: workbench.action.terminal.moveToEditor
+      - action: executeTerminalCommand
+        command: Set-Location cs -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force Calculator.Specs\TestResults\ -ErrorAction SilentlyContinue; Clear
+      - action: executeTerminalCommand
+        command: dotnet test --no-build
+  - title: Create Coverage Report
+    moves:
+      - action: executeTerminalCommand
+        command: reportgenerator -reports:**/coverage.cobertura.xml -targetdir:Reports -reporttypes:Html_Light -verbosity:Info
+  - title: Open Coverage Report
+    moves:
+      - action: openWebsite
+        openInVSCode: true
+        url: "{STATE_cs-path}/Reports/index.html"

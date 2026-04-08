@@ -1,0 +1,81 @@
+$schema: https://demotime.show/demo-time.schema.json
+title: 04 - Regular Expressions
+version: 3
+scenes:
+  - title: Show calculator.js
+    moves:
+      - action: create
+        path: /js/src/calculator.js
+        contentPath: .demo/snapshots/calculator.snapshot.js
+      - action: open
+        path: /js/src/calculator.js
+      - action: positionCursor
+        path: /js/src/calculator.js
+        position: '1'
+  - title: Show calculator.test
+    moves:
+      - action: create
+        path: /js/src/calculator.test.js
+        contentPath: .demo/snapshots/calculator.test.snapshot.js
+      - action: open
+        path: /js/src/calculator.test.js
+      - action: positionCursor
+        path: /js/src/calculator.test.js
+        position: '1'
+  - title: Run Stryker
+    moves:
+      - action: executeTerminalCommand
+        command: Set-Location ../js -ErrorAction SilentlyContinue; Get-Location | Select-Object -ExpandProperty Path | Set-Clipboard; Clear
+      - action: setState
+        state:
+          key: strykerjs-report
+          value: "{DT_CLIPBOARD}"
+      - action: executeTerminalCommand
+        command: npx stryker run
+  - title: Open mutation report
+    moves:
+      - action: openWebsite
+        openInVSCode: true
+        url: "{STATE_strykerjs-report}/reports/mutation/mutation.html"
+  - title: Add "testInput" method
+    moves:
+      - action: insert
+        path: /js/src/calculator.js
+        position: '26'
+        content: |-2
+
+            testInput(input) {
+              return /^[0-9]{3,}$/ig.test(input);
+            }
+      - action: highlight
+        path: /js/src/calculator.js
+        position: 27:29
+  - title: Add "testInput" test
+    moves:
+      - action: insert
+        path: /js/src/calculator.test.js
+        position: '34'
+        content: |-2
+
+            it('testInput with valid input returns true', () => {
+              expect(calculator.testInput('123')).toBe(true);
+            });
+      - action: highlight
+        path: /js/src/calculator.test.js
+        position: '35:37'
+  - title: Run Stryker
+    moves:
+      - action: executeTerminalCommand
+        command: npx stryker run
+  - title: Open mutation report
+    moves:
+      - action: openWebsite
+        openInVSCode: true
+        url: "{STATE_strykerjs-report}/reports/mutation/mutation.html"
+  - id: demo-mihz8vmt-z2nm
+    title: Back to PowerPoint
+    moves:
+      - action: openPowerPoint
+    icons:
+      start: arrow-left
+      end: ''
